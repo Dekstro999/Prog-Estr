@@ -49,6 +49,7 @@ void intercambiar(Tindice *a, Tindice *b);
 int separar(Tindice indices[], int inicio, int fin);
 void quickSort(Tindice indices[], int inicio, int fin);
 void ordenarQuickSort(Tindice indices[], int numIndices);
+void ordenarInsercion(Tindice indices[], int numIndices);
 // INTERFACE
 void interaface(int ancho, int largo, int column, int tamTitulo, const char *titulo);
 void printInterf(const char *texto);
@@ -657,7 +658,7 @@ int buscarBinaria(Tindice alumnos[], int numAlumnos, int matricula)
     return -1; // No se encontr
 }
 
-//                                              * * * * * * * METODOS DE ORDENACION * * * * * * *
+//                                * * * * * * * METODOS DE ORDENACION * * * * * * *
 void ordenarBurbuja(Tindice indices[], int numIndices)
 {
     for (int i = 0; i < numIndices - 1; i++)
@@ -714,6 +715,24 @@ void quickSort(Tindice indices[], int inicio, int fin)
 void ordenarQuickSort(Tindice indices[], int numIndices)
 {
     quickSort(indices, 0, numIndices - 1);
+    printf("\nAlumnos ordenados exitosamente.");
+}
+
+void ordenarInsercion(Tindice indices[], int numIndices)
+{
+    for (int i = 1; i < numIndices; i++)
+    {
+        Tindice key = indices[i];
+        int j = i - 1;
+
+        // Mueve los elementos del índice [0..i-1], que son mayores que la clave, a una posición adelante de su posición actual
+        while (j >= 0 && indices[j].key > key.key)
+        {
+            indices[j + 1] = indices[j];
+            j = j - 1;
+        }
+        indices[j + 1] = key;
+    }
     printf("\nAlumnos ordenados exitosamente.");
 }
 

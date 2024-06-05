@@ -1,5 +1,6 @@
-// Programa con menú para cargar, agregar, buscar, ordenar, mostrar y generar archivos de registros
-// Elaborado: 6/05/2024  Modificado: 10/05/2024
+// Diego Alonso Ibarra Galindo
+// Programa con menú para cargar, agregar, buscar, ordenar, mostrar y generar archivos de registros (indexados)
+// Elaborado: 20/05/2024  Modificado: 27/05/2024
 // DAIG_ACT14.cpp
 #include "_FUN.h"
 
@@ -15,6 +16,7 @@ void cargarArchivoBIN(Tindice indices[], int *numIndices);
 void mostrarTodo(Tindice indices[], int numIndices);
 void imprimirRegistrosBINARIO(int status, Tindice indices[], int numIndices);
 void generarArchivoTXT(Tindice indices[], int numIndices, int ordenado);
+void empaquetar(Tindice indices[], int *numIndices);
 
 //****  main principal  *********
 int main()
@@ -99,7 +101,7 @@ void opciones()
 
             break;
         case 8: // EMPAQUETAR
-            error("AUN NO ECHA");
+            empaquetar(indices, &numIndices);
             break;
         case 0:
             printf(" Saliendo del programa... ");
@@ -345,15 +347,23 @@ void ordenarPorMatricula(Tindice indices[], int numIndice)
 
     if (orden != 1)
     {
-        if (numIndice > 300)
+        if (numIndice < 50)
         {
-            printf("\nQHICKSHORT.\n");
-            ordenarQuickSort(indices, numIndice);
+            printf("\nINSERCIÓN.\n");
+            ordenarInsercion(indices, numIndice);
         }
         else
         {
-            printf("\nBURBUJA.\n");
-            ordenarBurbuja(indices, numIndice);
+            if (numIndice > 300)
+            {
+                printf("\nQHICKSHORT.\n");
+                ordenarQuickSort(indices, numIndice);
+            }
+            else
+            {
+                printf("\nBURBUJA.\n");
+                ordenarBurbuja(indices, numIndice);
+            }
         }
     }
     else
@@ -485,6 +495,58 @@ void generarArchivoTXT(Tindice indices[], int numIndices, int ordenado)
 
     fprintf(archivo, "====================================================================================================\n");
 
-    fclose(archivo);        // Cerrar el archivo
-    fclose(archivoBinario); // Cerrar el archivo binario
+    fclose(archivo);
+    fclose(archivoBinario);
+}
+
+void empaquetar(Tindice indices[], int *numIndices)
+{
+    FILE *archivo = fopen("datos.bin", "rb");
+    if (archivo == NULL)
+    {
+        error("Error al abrir el archivo binario.");
+        return;
+    }
+
+    // Crear un array temporal para almacenar los registros válidos
+    Alumno *alumnosValidos = (Alumno *)malloc(*numIndices * sizeof(Alumno));
+    int numValidos = 0;
+
+    Alumno temp;
+    for (int i = 0; i < *numIndices; i++)
+    {
+        fseek(archivo, indices[i].indice * sizeof(Alumno), SEEK_SET);
+        fread(&temp, sizeof(Alumno), 1, archivo);
+
+        if (temp.status == 1)
+        {
+            alumnosValidos[numValidos] = temp;
+            indices[numValidos].key = temp.matricula;
+            indices[numValidos].indice = numValidos;
+            numValidos++;
+        }
+    }
+
+    fclose(archivo);
+
+    // Reescribir el archivo binario solo con registros válidos
+    archivo = fopen("datos.bin", "wb");
+    if (archivo == NULL)
+    {
+        error("Error al abrir el archivo binario para reescribir.");
+        free(alumnosValidos);
+        return;
+    }
+
+    fwrite(alumnosValidos, sizeof(Alumno), numValidos, archivo);
+    fclose(archivo);
+
+    // Actualizar el número de índices
+    *numIndices = numValidos;
+    orden = 0;
+
+    free(alumnosValidos);
+
+    colorprintf(VERDE, "Archivo binario empaquetado exitosamente. Se han eliminado los registros inválidos.\n");
+    pause();
 }
