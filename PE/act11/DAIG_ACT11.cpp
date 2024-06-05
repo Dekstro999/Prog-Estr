@@ -1,7 +1,7 @@
 // Diego Alonso Ibarra Galindo
 // Programa con menú para cargar, agregar, buscar, ordenar, mostrar y generar archivos de registros
 // Elaborado: 1/05/2024  Modificado: 5/05/2024
-// DAIG_ACT12.cpp
+// DAIG_ACT11.cpp
 #include "_curp.h"
 
 // Prototipos de funciones
