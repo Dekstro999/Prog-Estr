@@ -321,3 +321,33 @@
  320.-  300627      Pedro           Diaz             Rodriguez           26      MASCULINO 
  321.-  322772      Julio           Vazquez          Torres              38      MASCULINO 
  322.-  303297      Raquel          Perez            Torres              6       FEMENINO  
+   0.-  306046      Juan            Vazquez          Torres              6       MASCULINO 
+   1.-  327555      Isabel          Serrano          Gonzalez            45      FEMENINO  
+   2.-  328894      Mariana         Serrano          Lopez               13      FEMENINO  
+   3.-  313045      Julio           Ramirez          Vazquez             0       MASCULINO 
+   4.-  311161      Natalia         Gomez            Ruiz                25      FEMENINO  
+   5.-  330048      Ana             Torres           Gonzalez            16      FEMENINO  
+   6.-  329941      Paula           Serrano          Ramirez             54      FEMENINO  
+   7.-  326116      Mariana         Jimenez          Jimenez             42      FEMENINO  
+   8.-  320670      Sara            Fernandez        Jimenez             45      FEMENINO  
+   9.-  322653      Isabel          Gonzalez         Ramirez             27      FEMENINO  
+   0.-  306046      Juan            Vazquez          Torres              6       MASCULINO 
+   1.-  327555      Isabel          Serrano          Gonzalez            45      FEMENINO  
+   2.-  328894      Mariana         Serrano          Lopez               13      FEMENINO  
+   3.-  313045      Julio           Ramirez          Vazquez             0       MASCULINO 
+   4.-  311161      Natalia         Gomez            Ruiz                25      FEMENINO  
+   5.-  330048      Ana             Torres           Gonzalez            16      FEMENINO  
+   6.-  329941      Paula           Serrano          Ramirez             54      FEMENINO  
+   7.-  326116      Mariana         Jimenez          Jimenez             42      FEMENINO  
+   8.-  320670      Sara            Fernandez        Jimenez             45      FEMENINO  
+   9.-  322653      Isabel          Gonzalez         Ramirez             27      FEMENINO  
+  10.-  306059      Paula           Torres           Lopez               28      FEMENINO  
+  11.-  315845      Luis            Gonzalez         Gonzalez            35      MASCULINO 
+  12.-  319359      Fernando        Gomez            Torres              6       MASCULINO 
+  13.-  309433      Rosa            Lopez            Serrano             15      FEMENINO  
+  14.-  318365      Paula           Perez            Diaz                47      FEMENINO  
+  15.-  324751      Isabel          Ramirez          Perez               30      FEMENINO  
+  16.-  309572      Ana             Torres           Vazquez             37      FEMENINO  
+  17.-  318092      Antonio         Lopez            Gomez               11      MASCULINO 
+  18.-  306249      Fernando        Gomez            Diaz                38      MASCULINO 
+  19.-  325612      Patricia        Gonzalez         Vazquez             27      FEMENINO  
